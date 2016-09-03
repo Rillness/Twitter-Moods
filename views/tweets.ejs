@@ -1,0 +1,47 @@
+<% include ../partials/header %>
+
+<div class="ui container">
+<h1>Tweets Page</h1>
+
+<h3><a href="/textTotal" class="ui button large">Show average emotion for: <%= searchQuery%> </a></h3>
+
+  <h2>Searched For : <%= searchQuery %></h2>
+
+  <a href="/"> Search Again </a>
+<br>
+  <br>
+<div class="col-md-12">
+      <div class="chat" id="chat">
+      </div>
+    </div>
+</div>
+
+
+<script>
+
+
+
+    $(function(){
+      var socket = io.connect();
+      var $chat = $('#chat');
+      var $tweeter = $('#tweeter');
+      var $counting = $('#counting')
+    //This below me is how the data is going to flow out.
+    socket.on('tweets', function(data){
+  var anger = '<h4> Anger: ' + data.emotions[0] + '%' +  '</h4>';
+  var disgust = '<h4> Disgust: ' + data.emotions[1] + '%' +  '</h4>';
+  var fear = '<h4> Fear: ' + data.emotions[2] + '%' +  '</h4>';
+  var joy = '<h4> Joy: ' + data.emotions[3] + '%' +  '</h4>';
+  var sadness = '<h4> Sadness: ' + data.emotions[4] + '%' +  '</h4>';
+
+
+
+         $chat.append('<div class="well">'  + '<a href=' +  "http://www.twitter.com/"  + data.usersIn  + '>' + "@" +  data.usersIn + '</a>' + ": " + data.twit + '<br> <br>' + anger + disgust + fear + joy + sadness + '</div>'  );
+
+        $counting.append(data.counter);
+        $counting.append('');
+    });
+    });
+  </script>
+
+<% include ../partials/header %>

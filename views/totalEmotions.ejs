@@ -1,0 +1,28 @@
+<% include ../partials/header %>
+<br><br>
+<div class="ui container">
+<a href="/">Search Again</a>
+<h3>Here are the emotions that twitter users are feeling for the topic of :</h3>
+<h2 style="color : red"><%= query %></h2>
+
+<h3>Emotions:</h3>
+<h4>
+  <ul>
+    <li>Anger: <%= emotions.anger %>%</li>
+    <br>
+    <li>Disgust: <%= emotions.disgust %>%</li>
+  <br>
+    <li>Fear: <%= emotions.fear %>%</li>
+  <br>
+    <li>Joy: <%= emotions.joy %>%</li>
+  <br>
+    <li>Sadness: <%= emotions.sadness %>%</li>
+  </ul>
+</h4>
+<br>
+<p>*The results are given by IBM Watson's Machine Learning Capabilities.</p>
+</div>
+
+
+
+<% include ../partials/header %>
